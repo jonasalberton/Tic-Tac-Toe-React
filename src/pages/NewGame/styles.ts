@@ -18,7 +18,7 @@ export const Card = styled('div', {
   textAlign: 'center',
   marginTop: '1rem',
   width: '100%',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
 });
 
 export const Row = styled('div', {
@@ -29,7 +29,8 @@ export const Row = styled('div', {
 export const MarkSwitcher = styled('div', {
   backgroundColor: '$background',
   borderRadius: '$md',
-  padding: '.5rem'
+  padding: '.5rem',
+  margin: '$md 0'
 });
 
 export const Button = styled('button', {
@@ -60,13 +61,16 @@ export const PlayButton = styled('button', {
   borderRadius: '$md',
   fontWeight: 'bold',
   userSelect: 'none',
-  fontSize: '1.5rem',
+  fontSize: '1.2rem',
   width: '100%',
   marginTop: '2rem',
   color: '$background',
+  transition: 'all .3s',
   border: '1px solid black',
   '&:hover': {
-    opacity: '.8'
+    opacity: '.9',
+    boxShadow: 'none',
+    transform: 'translateY(10px)'
   },
   variants: {
     color: {

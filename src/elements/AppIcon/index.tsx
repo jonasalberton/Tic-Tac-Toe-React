@@ -4,7 +4,8 @@ import { Typograph } from '../Typograph';
 const Container = styled('div', {
   display: 'flex',
   gap: '.5rem',
-  userSelect: 'none'
+  userSelect: 'none',
+  lineHeight: 1
 });
 
 function AppIcon() {

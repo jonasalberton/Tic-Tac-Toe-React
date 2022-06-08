@@ -11,7 +11,7 @@ const ResponsiveContainer = styled('div', {
   maxWidth: '700px',
   height: '100vh',
   display: 'flex',
-  padding: '3rem',
+  padding: '2rem',
   boxSizing: 'border-box'
 })
 
