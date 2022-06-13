@@ -1,14 +1,14 @@
 import { createContext, useState } from "react";
 import { PlayerMark } from "../models/player";
 
-const UserContext = createContext({
+const GameContext = createContext({
   firstPlayerMark: PlayerMark.X,
   isVsCpu: false,
   setState: (marker: PlayerMark, vsCPU: boolean) => {}
 });
 
 
-function UserContextProvider(props: any) {
+function GameContextProvider(props: any) {
   const [firstPlayerMark, setFirstPlayerMark] = useState<PlayerMark>(PlayerMark.X);
   const [isVsCpu, setIsVsCpu] = useState<boolean>(false);
 
@@ -18,11 +18,11 @@ function UserContextProvider(props: any) {
   }
 
   return (
-    <UserContext.Provider value={{firstPlayerMark, isVsCpu: isVsCpu, setState}}>
+    <GameContext.Provider value={{firstPlayerMark, isVsCpu: isVsCpu, setState}}>
       {props.children}
-    </UserContext.Provider>
+    </GameContext.Provider>
   )
 }
 
-export default UserContext;
-export { UserContextProvider };
+export default GameContext;
+export { GameContextProvider as UserContextProvider };
