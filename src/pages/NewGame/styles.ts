@@ -1,23 +1,22 @@
 import { styled } from "../../stitches.config";
 
 export const Container = styled('div', {
-  display: 'flex',
   flex: 1,
+  display: 'flex',
+  alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
-  alignItems: 'center',
-
 });
 
 export const Card = styled('div', {
-  backgroundColor: '$card',
-  borderRadius: '$md',
-  boxShadow: '$md',
-  padding: '$md',
-  color: '$neutral',
-  textAlign: 'center',
-  marginTop: '1rem',
   width: '100%',
+  padding: '$md',
+  boxShadow: '$md',
+  color: '$neutral',
+  marginTop: '1rem',
+  textAlign: 'center',
+  borderRadius: '$md',
+  backgroundColor: '$card',
   boxSizing: 'border-box',
 });
 
@@ -27,43 +26,43 @@ export const Row = styled('div', {
 });
 
 export const MarkSwitcher = styled('div', {
-  backgroundColor: '$background',
-  borderRadius: '$md',
+  margin: '$md 0',
   padding: '.5rem',
-  margin: '$md 0'
+  borderRadius: '$md',
+  backgroundColor: '$background',
 });
 
 export const Button = styled('button', {
-  cursor: 'pointer',
-  backgroundColor: '$neutral',
+  width: '50%',
   border: 'none',
   outline: 'none',
-  color: '$background',
   fontSize: '3rem',
-  borderRadius: '$md',
+  cursor: 'pointer',
   fontWeight: 'bold',
-  width: '50%',
   userSelect: 'none',
+  borderRadius: '$md',
+  color: '$background',
+  backgroundColor: '$neutral',
   variants: {
     selected: {
       true: {
-        backgroundColor: '$background',
-        color: '$neutral'
+        color: '$neutral',
+        backgroundColor: '$background'
       }
     }
   }
 });
 
 
-export const PlayButton = styled('button', {
-  cursor: 'pointer',
+export const PlayButton = styled( 'button', {
+  width: '100%',
   outline: 'none',
-  borderRadius: '$md',
+  cursor: 'pointer',
+  marginTop: '2rem',
   fontWeight: 'bold',
   userSelect: 'none',
   fontSize: '1.2rem',
-  width: '100%',
-  marginTop: '2rem',
+  borderRadius: '$md',
   color: '$background',
   transition: 'all .3s',
   border: '1px solid black',
@@ -75,15 +74,13 @@ export const PlayButton = styled('button', {
   variants: {
     color: {
       xPlayer: {
-        backgroundColor: '$xPlayer',
-        boxShadow: '$xPlayer'
+        boxShadow: '$xPlayer',
+        backgroundColor: '$xPlayer'
       },
       oPlayer: {
-        backgroundColor: '$oPlayer',
-        boxShadow: '$oPlayer'
+        boxShadow: '$oPlayer',
+        backgroundColor: '$oPlayer'
       }
     }
   }
 });
-
-

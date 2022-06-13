@@ -1,40 +1,28 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
+import { PlayerMark } from "../models/player";
 
-interface Context {
-  vsCpu: boolean;
-  fisrtPlayer: PlayerMark;
-  secondPlayer: PlayerMark;
-};
-
-export enum PlayerMark {
-  X = 'X',
-  O = 'O'
-};
-
-const INITIAL_STATE: Context = {
-  fisrtPlayer: PlayerMark.X,
-  secondPlayer: PlayerMark.O,
-  vsCpu: false
-}
-
-const UserContext = createContext(INITIAL_STATE);
+const UserContext = createContext({
+  firstPlayerMark: PlayerMark.X,
+  isVsCpu: false,
+  setState: (marker: PlayerMark, vsCPU: boolean) => {}
+});
 
 
 function UserContextProvider(props: any) {
-  
+  const [firstPlayerMark, setFirstPlayerMark] = useState<PlayerMark>(PlayerMark.X);
+  const [isVsCpu, setIsVsCpu] = useState<boolean>(false);
 
+  const setState = (marker: PlayerMark, vsCPU: boolean) => {
+    setFirstPlayerMark(marker);
+    setIsVsCpu(vsCPU);
+  }
 
   return (
-    // <UserContext.Provider value={{fisrtPlayer: '', secondPlayer: '', vsCpu: false}} >
-    //   {props.children}
-    // </UserContext.Provider>
-
-    <>
-    {props.children}
-    </>
+    <UserContext.Provider value={{firstPlayerMark, isVsCpu: isVsCpu, setState}}>
+      {props.children}
+    </UserContext.Provider>
   )
 }
 
-
-
-export { UserContext, UserContextProvider };
+export default UserContext;
+export { UserContextProvider };

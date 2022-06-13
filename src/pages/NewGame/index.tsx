@@ -1,18 +1,37 @@
-import { useState } from 'react';
-import { Container, Card, Row, MarkSwitcher, Button, PlayButton } from './styles';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Routes } from '../../models/routes';
 import { AppIcon } from '../../elements/AppIcon';
-import { PlayerMark } from '../../contexts/UserContext';
+import { PlayerMark } from '../../models/player';
+import UserContext from '../../contexts/UserContext';
+import { Container, Card, Row, MarkSwitcher, Button, PlayButton } from './styles';
 
 function NewGame() {
+  const {setState, firstPlayerMark} = useContext(UserContext);
+  const [playerOne, setPlayerOne] = useState<PlayerMark>(firstPlayerMark || PlayerMark.X);
+  const navigate = useNavigate();
 
-  const [playerOne, setPlayerOne] = useState<PlayerMark>(PlayerMark.X);
+  const newGameCpuHandler = () => {
+    setState(playerOne, true);
+    startGame();
+  }
+
+  const newGamePlayerHandler = () => {
+    setState(playerOne, false);
+    startGame();
+  }
   
+  const startGame = () => {
+    navigate(Routes.BOARD);
+  }
 
   return (
     <Container>
       <Row>
         <AppIcon/>
       </Row>
+
       <Card>
         <span>PICK PLAYER 1'S MARK</span>
         <MarkSwitcher>
@@ -22,8 +41,8 @@ function NewGame() {
         <span>REMENBER: {playerOne} GOES FIRST</span>
       </Card>
 
-      <PlayButton type='button' color={'xPlayer'}>NEW GAME VS (CPU)</PlayButton>
-      <PlayButton type='button' color={'oPlayer'}>NEW GAME VS (PLAYER)</PlayButton>
+      <PlayButton type='button' color={'xPlayer'} onClick={newGameCpuHandler}>NEW GAME VS (CPU)</PlayButton>
+      <PlayButton type='button' color={'oPlayer'} onClick={newGamePlayerHandler}>NEW GAME VS (PLAYER)</PlayButton>
 
     </Container>
   )
